@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Set;
 
@@ -34,7 +33,7 @@ public class GreetingController {
         greetingService.saveGreeting(greeting);
         log.info(String.valueOf(greeting.getId()));
         log.info(String.valueOf(greeting.getContent()));
-        return "resultModelAtribute";
+        return "resultModelAttribute";
     }
 
     @GetMapping("/greeting/show")
