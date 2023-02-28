@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tr>
+    <th>Greetings list</th>
+</tr>
+<table class="table table-hover ">
+    <thead class="thead-inverse">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tr th:each="greeting : ${greetings}">
+        <td th:text="${greeting.id}">Id</td>
+        <td th:text="${greeting.content}">Content</td>
+    </tr>
+</table>
+</body>
+</html>
