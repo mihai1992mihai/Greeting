@@ -27,15 +27,6 @@ public class GreetingController {
         return "greeting";
     }
 
-//    ModelAttribute binding form
-    @PostMapping("/greeting")
-    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("greeting", greeting);
-        greetingService.saveGreeting(greeting);
-        log.info(String.valueOf(greeting.getId()));
-        log.info(String.valueOf(greeting.getContent()));
-        return "resultModelAtribute";
-    }
 
     @GetMapping("/greeting/show")
     public String showAll(Model model){
@@ -45,20 +36,20 @@ public class GreetingController {
     }
 
     //RequestParam Binding form
-//    @PostMapping("/greeting")
-//    public String greetingSubmit(@RequestParam("id") String id,
-//                                 @RequestParam("content") String content, Model model) {
-//        model.addAttribute("id", id);
-//        model.addAttribute("content", content);
-//
-//        log.info(id);
-//        log.info(content);
-//        Greeting greeting = new Greeting();
-//        greeting.setId(Long.valueOf(id));
-//        greeting.setContent(content);
-//        greetingService.saveGreeting(greeting);
-//        return "resultRequestParam";
-//    }
+    @PostMapping("/greeting")
+    public String greetingSubmit(@RequestParam("id") String id,
+                                 @RequestParam("content") String content, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("content", content);
+
+        log.info(id);
+        log.info(content);
+        Greeting greeting = new Greeting();
+        greeting.setId(Long.valueOf(id));
+        greeting.setContent(content);
+        greetingService.saveGreeting(greeting);
+        return "resultRequestParam";
+    }
 
 
 }
