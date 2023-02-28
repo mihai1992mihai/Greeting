@@ -2,17 +2,24 @@ package com.example.demo;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class GreetingSertviceImp implements GreetingService{
 
-    private final GreetingService greetingRepository;
+    private final GreetingRepository greetingRepository;
 
-    public GreetingSertviceImp(GreetingService greetingRepository) {
+    public GreetingSertviceImp(GreetingRepository greetingRepository) {
         this.greetingRepository = greetingRepository;
     }
 
-    public Greeting saveGreeting(){
-        //greetingRepository. nu gaseste nici un method de la CRUD???
+    @Override
+    public Greeting saveGreeting(Greeting greeting) {
+        return greetingRepository.save(greeting);
+    }
 
+    @Override
+    public Set<Greeting> findAll(){
+        return greetingRepository.findAll();
     }
 }
