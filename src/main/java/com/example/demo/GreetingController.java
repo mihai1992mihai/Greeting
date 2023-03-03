@@ -50,8 +50,8 @@ public class GreetingController {
     }
 
     @GetMapping("/greeting/{id}/view")
-    public String showGreeting(@PathVariable String id, Model model){
-        Optional<Greeting> greetingOptional = greetingService.findById(Long.valueOf(id));
+    public String showGreeting(@PathVariable Long id, Model model){
+        Optional<Greeting> greetingOptional = greetingService.findById(id);
         log.info(String.valueOf(greetingOptional.get().getId()));
 
         if (!greetingOptional.isPresent()){
