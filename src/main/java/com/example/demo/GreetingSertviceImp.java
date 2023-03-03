@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -21,5 +22,10 @@ public class GreetingSertviceImp implements GreetingService{
     @Override
     public Set<Greeting> findAll(){
         return greetingRepository.findAll();
+    }
+
+    @Override
+    public Optional<Greeting> findById(Long id) {
+        return greetingRepository.findById(id);
     }
 }

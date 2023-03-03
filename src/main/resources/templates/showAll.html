@@ -18,6 +18,7 @@
     <tr th:each="greeting : ${greetings}">
         <td th:text="${greeting.id}">Id</td>
         <td th:text="${greeting.content}">Content</td>
+        <td><a th:href="@{'/greeting/' + ${greeting.id} + '/view'}">View</a></td>
     </tr>
 </table>
 </body>

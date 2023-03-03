@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Log
@@ -43,6 +45,19 @@ public class GreetingController {
         return "showAll";
     }
 
+    @GetMapping("/greeting/{id}/view")
+    public String showGreeting(@PathVariable String id, Model model){
+        Optional<Greeting> greetingOptional = greetingService.findById(Long.valueOf(id));
+        log.info(String.valueOf(greetingOptional.get().getId()));
+
+        if (!greetingOptional.isPresent()){
+            log.info("recipe not found");
+
+        }
+        model.addAttribute("greeting", greetingOptional.get());
+        return "showOne";
+
+    }
 
 
 }
